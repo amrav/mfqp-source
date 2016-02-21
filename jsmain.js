@@ -2,10 +2,10 @@ var displaylist = function(id){
   for(var i=0;i<sortedkeys.length;i++){
     if (sortedkeys[i].slice(0,2)===id){
       if (subjects[sortedkeys[i]][1]===true){
-        $("#subjectlist").append($("<li class='listclass'></li>").html(sortedkeys[i]+" : "+subjects[sortedkeys[i]][0]+" <i class='fa fa-check' style='color:green'></i>"));
+        $("#subjectlist").append($("<li class='listclass col-md-6'></li>").html(sortedkeys[i]+" : "+subjects[sortedkeys[i]][0]+" <i class='fa fa-check' style='color:green'></i>"));
       }
       else if (subjects[sortedkeys[i]][1]===false){
-        $("#subjectlist").append($("<li class='listclass'></li>").html(sortedkeys[i]+" : "+subjects[sortedkeys[i]][0]+" <i class='fa fa-times' style='color:red'></i>"));
+        $("#subjectlist").append($("<li class='listclass col-md-6'></li>").html(sortedkeys[i]+" : "+subjects[sortedkeys[i]][0]+" <i class='fa fa-times' style='color:red'></i>"));
       }
     }
   }  
