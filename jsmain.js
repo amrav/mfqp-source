@@ -19,7 +19,7 @@ var donutty = function(eleid,arr,key,r1,r2){
   newarr[0]=linearScale1(arr[0]+arr[1]);
   newarr[1]=linearScale1(arr[1]);
 
-	var statcol = ['#e74c3c','#27ae60'];
+    var statcol = ['#34495e', '#2ecc71'];
 	var arc_sex = d3.svg.arc()
 		//.innerRadius(32)
 		//.outerRadius(48)
@@ -80,10 +80,10 @@ var sortedkeys = [];
 window.onload = function(){
   $("#percentageover").html(perc+"%");
   var bar =  d3.select("#progressbar").append("svg").attr("width",300).attr("height",20);
-  bar.append("rect").attr("width",280).attr("height",20).attr("x",10).attr("fill","#333333");
-  bar.append("rect").attr("width",parseInt(perc*280/100)).attr("height",20).attr("x",10).attr("fill","#1BC7DA");
-  bar.append("circle").attr("cx",10).attr("cy",10).attr("r",10).attr("fill","#1BC7DA");
-  bar.append("circle").attr("cx",290).attr("cy",10).attr("r",10).attr("fill","#333333");
+  bar.append("rect").attr("width",280).attr("height",20).attr("x",10).attr("fill","#34495e");
+  bar.append("rect").attr("width",parseInt(perc*280/100)).attr("height",20).attr("x",10).attr("fill","#2ecc71");
+  bar.append("circle").attr("cx",10).attr("cy",10).attr("r",10).attr("fill","#2ecc71");
+  bar.append("circle").attr("cx",290).attr("cy",10).attr("r",10).attr("fill","#34495e");
 
   $("#numberover").html(done_no);
   $("#total").html(total_no);
