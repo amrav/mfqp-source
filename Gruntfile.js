@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 		}
 	});
 
-    grunt.registerTask('build', ['clean', 'copy:dist', 'htmlmin']);
+    grunt.registerTask('build', ['clean', 'copy:dist']);
 
 	require('load-grunt-tasks')(grunt);
 };
