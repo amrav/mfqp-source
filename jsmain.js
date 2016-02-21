@@ -1,14 +1,14 @@
 var displaylist = function(id){
-  for(var i=0;i<sortedkeys.length;i++){
-    if (sortedkeys[i].slice(0,2)===id){
-      if (subjects[sortedkeys[i]][1]===true){
+    for(var i=0;i<sortedkeys.length;i++){
+        if (sortedkeys[i].slice(0,2)===id){
+        if (subjects[sortedkeys[i]][1]===true){
         $("#subjectlist").append($("<li class='listclass'></li>").html(sortedkeys[i]+" : "+subjects[sortedkeys[i]][0]+" <i class='fa fa-check' style='color:green'></i>"));
       }
-      else if (subjects[sortedkeys[i]][1]===false){
+        else if (subjects[sortedkeys[i]][1]===false){
         $("#subjectlist").append($("<li class='listclass'></li>").html(sortedkeys[i]+" : "+subjects[sortedkeys[i]][0]+" <i class='fa fa-times' style='color:red'></i>"));
       }
     }
-  }  
+  }
 };
 
 var donutty = function(eleid,arr,key,r1,r2){
@@ -40,7 +40,7 @@ var donutty = function(eleid,arr,key,r1,r2){
 	donutsvg.append("text").attr("text-anchor","middle").attr("x",r2).attr("y",r2).attr("class","descrip").style('font-weight',900).attr("class","pointer").text(key);
 	donutsvg.append("text").attr("text-anchor","middle").attr("x",r2).attr("y",1.2*r2+20).attr("class","descrip").style('font-size',30).attr("class","pointer").text(linearScale2(arr[1]).toFixed(0)+"%");
   //donutsvg.append("text").attr("text-anchor","middle").attr("x",50).attr("y",75).text("collected");
-  
+
   donutsvg.on("click",function(){
     var id = $(this).attr("class");
     console.log(id);
@@ -77,6 +77,23 @@ for (var key in subjects) {
 var perc = (done_no*100/total_no).toFixed(2);
 var sorted=[];
 var sortedkeys = [];
+(function() {
+    for(var key in depwise){
+        var temp = depwise[key][1]/(depwise[key][0]+depwise[key][1]);
+        sorted.push([key,temp]);
+    }
+
+    for(var key in subjects){
+        sortedkeys.push(key);
+    }
+
+    sorted.sort(function(a, b) {
+        return b[1] - a[1];
+    });
+
+
+    sortedkeys.sort();
+})();
 window.onload = function(){
   $("#percentageover").html(perc+"%");
   var bar =  d3.select("#progressbar").append("svg").attr("width",300).attr("height",20);
@@ -87,24 +104,6 @@ window.onload = function(){
 
   $("#numberover").html(done_no);
   $("#total").html(total_no);
-
-  for(var key in depwise){
-    var temp = depwise[key][1]/(depwise[key][0]+depwise[key][1]);
-    sorted.push([key,temp]);
-  }
-
-  for(var key in subjects){
-    sortedkeys.push(key);
-  }
-
-  sorted.sort(function(a, b) {
-    return b[1] - a[1];
-  });
-
-
-  sortedkeys.sort();
-
-
 
   for(var i=0;i<sorted.length;i++){
     donutty("donuts",depwise[sorted[i][0]],sorted[i][0],30,50);
